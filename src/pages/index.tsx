@@ -1,61 +1,36 @@
 import * as React from 'react';
+import Metrics from '@/components/Metrics/Metrics';
+import Profile from '@/components/Profile/Profile';
 
 export default function HomePage() {
   return (
-    <div className='flex'>
-      <div className='h-[100vh] w-[5rem] bg-[rgb(20,195,142)]'></div>
-      <div className='m-5 flex flex-col'>
-        <div className=''>
-          <h1 className='text-3xl font-bold'>Hello Sai! 👋</h1>
-          <p>Welcome, Let’s do some workout today</p>
-        </div>
-        <div className='mt-10 flex'>
-          <div className='mr-10'>
-            <div className='h-[28rem] w-[40rem] rounded-lg border border-[#14C38E]'></div>
+    <div className='flex flex-col lg:flex-row'>
+      <div className='h-[8rem] w-[200vw] bg-[rgb(20,195,142)] lg:h-[100vh] lg:w-[5rem]'></div>
+      <div className='flex w-[200vw] flex-col items-center lg:w-fit lg:items-start'>
+        <span className='flex flex-col items-center lg:m-5 lg:items-start'>
+          <h1 className='mt-5 text-6xl font-bold lg:mt-0 lg:text-3xl'>
+            Hello Sai! 👋
+          </h1>
+          <p className='mt-5 text-3xl lg:mt-1 lg:text-lg'>
+            Welcome, Let’s do some workout today
+          </p>
+        </span>
+        <div className='flex flex-col items-center lg:flex-row'>
+          <div className='mt-10 lg:mt-4 lg:ml-5'>
+            <div className='h-[28rem] w-[45rem] rounded-lg border border-[#14C38E] lg:w-[40rem]'></div>
           </div>
-          <div className='flex flex-col gap-6'>
-            <div className='flex h-[4rem] w-[14rem] items-center justify-evenly rounded-lg border border-[#14C38E]'>
-              <div className='flex flex-col justify-center font-bold'>
-                <p>Calories</p>
-                <p>Burned</p>
-              </div>
-              <p className='font-bold'>789</p>
-            </div>
-            <div className='flex h-[4rem] w-[14rem] items-center justify-evenly rounded-lg border border-[#14C38E]'>
-              <div className='flex flex-col justify-center font-bold'>
-                <p>Calories</p>
-                <p>Burned</p>
-              </div>
-              <p className='font-bold'>789</p>
-            </div>
-            <div className='flex h-[4rem] w-[14rem] items-center justify-evenly rounded-lg border border-[#14C38E]'>
-              <div className='flex flex-col justify-center font-bold'>
-                <p>Calories</p>
-                <p>Consumed</p>
-              </div>
-              <p className='font-bold'>1452</p>
-            </div>
-            <div className='flex h-[4rem] w-[14rem] items-center justify-evenly rounded-lg border border-[#14C38E]'>
-              <div className='flex flex-col justify-center font-bold'>
-                <p>Calories</p>
-                <p>Difference</p>
-              </div>
-              <p className='font-bold'>663</p>
-            </div>
-            <div className='flex h-[4rem] w-[14rem] items-center justify-evenly rounded-lg border border-[#14C38E]'>
-              <div className='flex flex-col justify-center font-bold'>
-                <p>Current</p>
-                <p>Weight</p>
-              </div>
-              <p className='font-bold'>
-                85.0<span className='ml-1'>Kg</span>
-              </p>
-            </div>
+          <Metrics />
+        </div>
+        <div className='flex flex-col items-center lg:flex-row'>
+          <div className='mt-10 flex h-[4rem] w-[15rem] cursor-pointer items-center justify-center rounded-lg bg-[#FF9549] text-2xl font-bold lg:ml-5 lg:h-[3rem] lg:w-[12rem] lg:text-base'>
+            <p>Macros Consumed</p>
+          </div>
+          <div className='mt-10 flex h-[4rem] w-[15rem] cursor-pointer items-center justify-center rounded-lg bg-[#FF9549] text-2xl  font-bold lg:ml-5 lg:h-[3rem] lg:w-[10rem] lg:text-base'>
+            <p>Add</p>
           </div>
         </div>
-        <div className='mt-10 h-10 w-[100px] bg-red-700'></div>
       </div>
-      <div className='ml-[3rem] h-[100vh] w-[27vw] bg-[#14C38E]'></div>
+      <Profile />
     </div>
   );
 }
