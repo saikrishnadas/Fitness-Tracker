@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Metrics from '@/components/Metrics/Metrics';
 import Profile from '@/components/Profile/Profile';
+import Add from '@/components/Add/Add';
 
 export default function HomePage() {
   return (
@@ -25,9 +26,7 @@ export default function HomePage() {
           <div className='mt-10 flex h-[4rem] w-[15rem] cursor-pointer items-center justify-center rounded-lg bg-[#FF9549] text-2xl font-bold lg:ml-5 lg:h-[3rem] lg:w-[12rem] lg:text-base'>
             <p>Macros Consumed</p>
           </div>
-          <div className='mt-10 flex h-[4rem] w-[15rem] cursor-pointer items-center justify-center rounded-lg bg-[#FF9549] text-2xl  font-bold lg:ml-5 lg:h-[3rem] lg:w-[10rem] lg:text-base'>
-            <p>Add</p>
-          </div>
+          <Add />
         </div>
       </div>
       <Profile />
