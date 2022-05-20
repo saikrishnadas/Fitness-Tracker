@@ -2,11 +2,15 @@ import * as React from 'react';
 import Metrics from '@/components/Metrics/Metrics';
 import Profile from '@/components/Profile/Profile';
 import Add from '@/components/Add/Add';
-import CaloriesBurnedChart from '@/components/Charts/CaloriesBurnedChart';
+import CaloriesBurnedChart from '@/components/Charts/CaloriesBurnedConsumedChart';
 import CaloriesDifferenceChart from '@/components/Charts/CaloriesDifferenceChart';
 import WeightChart from '@/components/Charts/WeightChart';
+import MacrosChart from '../components/Charts/MacrosChart';
+import { useRecoilState } from 'recoil';
+import { chartState } from '../Atoms/chartAtom';
 
 export default function HomePage() {
+  const [chart, setChart] = useRecoilState(chartState);
   return (
     <div className='flex flex-col lg:flex-row'>
       <div className='h-[8rem] w-[200vw] bg-[rgb(20,195,142)] lg:h-[100vh] lg:w-[5rem]'></div>
@@ -20,16 +24,18 @@ export default function HomePage() {
           </p>
         </span>
         <div className='flex flex-col items-center lg:flex-row'>
-          <div className='mt-10 lg:mt-4 lg:ml-5'>
-            {/* <div className='h-[28rem] w-[45rem] rounded-lg border border-[#14C38E] lg:w-[40rem]'></div> */}
-            {/* <CaloriesBurnedChart /> */}
-            {/* <CaloriesDifferenceChart /> */}
-            <WeightChart />
-          </div>
+          {chart === 'calories-burned' && <CaloriesBurnedChart />}
+          {chart === 'calories-consumed' && <CaloriesBurnedChart />}
+          {chart === 'calories-difference' && <CaloriesDifferenceChart />}
+          {chart === 'weight' && <WeightChart />}
+          {chart === 'macros' && <MacrosChart />}
           <Metrics />
         </div>
         <div className='flex flex-col items-center lg:flex-row'>
-          <div className='mt-10 flex h-[4rem] w-[15rem] cursor-pointer items-center justify-center rounded-lg bg-[#FF9549] text-2xl font-bold lg:ml-5 lg:h-[3rem] lg:w-[12rem] lg:text-base'>
+          <div
+            onClick={() => setChart('macros')}
+            className='mt-10 flex h-[4rem] w-[15rem] cursor-pointer items-center justify-center rounded-lg bg-[#FF9549] text-2xl font-bold lg:ml-5 lg:h-[3rem] lg:w-[12rem] lg:text-base'
+          >
             <p>Macros Consumed</p>
           </div>
           <Add />

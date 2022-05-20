@@ -17,7 +17,7 @@ function MetricBox({
     <div
       className={`flex h-[6rem] w-[18rem] items-center justify-evenly rounded-lg border lg:h-[4rem] lg:w-[14rem] border-[${color}]`}
     >
-      <div className='flex flex-col justify-center text-2xl font-bold lg:text-base'>
+      <div className='flex cursor-pointer flex-col justify-center text-2xl font-bold lg:text-base'>
         <p className='capitalize'>{text}</p>
         <p className='capitalize'>{description}</p>
       </div>
