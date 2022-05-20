@@ -1,3 +1,4 @@
+/*
 import { useState } from 'react';
 // @ts-ignore
 import { Timeline, TimelineEvent } from 'react-event-timeline';
@@ -70,3 +71,4 @@ function WeightTracker({ count }: WeightTrackerProps) {
 }
 
 export default WeightTracker;
+*/
