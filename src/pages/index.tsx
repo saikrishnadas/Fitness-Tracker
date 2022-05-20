@@ -2,6 +2,9 @@ import * as React from 'react';
 import Metrics from '@/components/Metrics/Metrics';
 import Profile from '@/components/Profile/Profile';
 import Add from '@/components/Add/Add';
+import CaloriesBurnedChart from '@/components/Charts/CaloriesBurnedChart';
+import CaloriesDifferenceChart from '@/components/Charts/CaloriesDifferenceChart';
+import WeightChart from '@/components/Charts/WeightChart';
 
 export default function HomePage() {
   return (
@@ -18,7 +21,10 @@ export default function HomePage() {
         </span>
         <div className='flex flex-col items-center lg:flex-row'>
           <div className='mt-10 lg:mt-4 lg:ml-5'>
-            <div className='h-[28rem] w-[45rem] rounded-lg border border-[#14C38E] lg:w-[40rem]'></div>
+            {/* <div className='h-[28rem] w-[45rem] rounded-lg border border-[#14C38E] lg:w-[40rem]'></div> */}
+            {/* <CaloriesBurnedChart /> */}
+            {/* <CaloriesDifferenceChart /> */}
+            <WeightChart />
           </div>
           <Metrics />
         </div>
