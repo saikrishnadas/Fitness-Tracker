@@ -128,7 +128,7 @@ function Add() {
                 />
               </div>
               <div className='flex justify-between'>
-                <p className='mr-10 text-2xl lg:mr-5 lg:text-base'>Protein</p>
+                <p className='mr-10 text-2xl lg:mr-5 lg:text-base'>Proteinsss</p>
                 <TextField
                   placeholder='Enter the Protein Ate Today'
                   value={values.protein}
