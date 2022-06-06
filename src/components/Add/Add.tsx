@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import { Formik, Form, useField } from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
 
 const customStyles = {
   content: {
@@ -61,6 +62,9 @@ function Add() {
     fat: yup.number().required(),
     fiber: yup.number().required(),
   });
+  const handleSubmit = async (data:any) => {
+    await axios.post('/api/addFood',data)
+  }
   return (
     <>
       <div
@@ -89,6 +93,7 @@ function Add() {
           validationSchema={validationSchema}
           onSubmit={(data, { resetForm }) => {
             console.log(data);
+            handleSubmit(data);
             resetForm();
           }}
         >
