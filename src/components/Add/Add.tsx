@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // @ts-ignore
 import Modal from 'react-modal';
 import { Formik, Form, useField } from 'formik';
@@ -47,6 +47,14 @@ export const TextField = ({ placeholder, ...props }: any) => {
 
 function Add() {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [currentDate,setCurrent] = useState<any>()
+
+  const todayDate = new Date();
+  useEffect(() => {
+    const fetchDate = todayDate.getDate()+"-"+todayDate.getMonth()+"-"+todayDate.getFullYear();
+    setCurrent(fetchDate);
+  },[todayDate])
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -63,7 +71,16 @@ function Add() {
     fiber: yup.number().required(),
   });
   const handleSubmit = async (data:any) => {
-    await axios.post('/api/addFood',data)
+    await axios.post('/api/addFood',{
+    caloriesBurned:data.caloriesBurned,
+    caloriesConsumed:data.caloriesConsumed,
+    caloriesDifference:data.caloriesDifference,
+    protein:data.protein,
+    carbs:data.carbs,
+    fat:data.fat,
+    fiber:data.fiber,
+    date: currentDate
+    })
   }
   return (
     <>
@@ -73,6 +90,7 @@ function Add() {
       >
         <p>Add</p>
       </div>
+      {/* <button style={{marginLeft:"40px"}} onClick={() => console.log(new Date())}>test ADD</button> */}
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}

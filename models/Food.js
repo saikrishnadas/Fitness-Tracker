@@ -29,6 +29,10 @@ const foodSchema = new mongoose.Schema(
         fiber:{
             type: Number,
             required: true
+        },
+        date:{
+            type: Date,
+            required:true
         }
     },
     { timestamps: true }

@@ -2,8 +2,11 @@ import MetricBox from '@/components/Metrics/MetricBox';
 import { useRecoilState } from 'recoil';
 import { chartState } from '../../Atoms/chartAtom';
 
-function Metrics() {
+function Metrics({datas}:any) {
   const [chart, setChart] = useRecoilState(chartState);
+  console.log("datas",datas)
+  const today = new Date();
+  const fetchDate = today.getDate()+"-"+today.getMonth()+"-"+today.getFullYear();
   return (
     <div className='mt-10 grid grid-cols-2 gap-4 lg:mt-0 lg:ml-10 lg:grid-cols-1 lg:gap-6'>
       <span onClick={() => setChart('calories-burned')}>
@@ -13,6 +16,8 @@ function Metrics() {
           count={789}
           isWeight={false}
           color='#14C38E'
+          datas={datas}
+
         />
       </span>
       <span onClick={() => setChart('calories-consumed')}>
@@ -22,6 +27,7 @@ function Metrics() {
           count={1452}
           isWeight={false}
           color='#14C38E'
+          datas={datas}
         />
       </span>
       <span onClick={() => setChart('calories-difference')}>
@@ -31,6 +37,7 @@ function Metrics() {
           count={663}
           isWeight={false}
           color='#14C38E'
+          datas={datas}
         />
       </span>
       <span onClick={() => setChart('weight')}>

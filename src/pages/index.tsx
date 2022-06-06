@@ -8,9 +8,24 @@ import WeightChart from '@/components/Charts/WeightChart';
 import MacrosChart from '../components/Charts/MacrosChart';
 import { useRecoilState } from 'recoil';
 import { chartState } from '../Atoms/chartAtom';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function HomePage() {
   const [chart, setChart] = useRecoilState(chartState);
+  const [datas,setDatas] = React.useState([])
+
+  const getData = async () =>{
+    await axios.get("/api/addFood").then((resp) => {
+      setDatas(resp.data)
+      console.log(resp.data);
+    })
+  } 
+  
+  useEffect(() => {
+    getData();
+  },[])
+
   return (
     <div className='flex flex-col lg:flex-row'>
       <div className='h-[8rem] w-[200vw] bg-[rgb(20,195,142)] lg:h-[100vh] lg:w-[5rem]'></div>
@@ -29,7 +44,7 @@ export default function HomePage() {
           {chart === 'calories-difference' && <CaloriesDifferenceChart />}
           {chart === 'weight' && <WeightChart />}
           {chart === 'macros' && <MacrosChart />}
-          <Metrics />
+          <Metrics datas={datas}/>
         </div>
         <div className='flex flex-col items-center lg:flex-row'>
           <div
@@ -39,6 +54,7 @@ export default function HomePage() {
             <p>Macros Consumed</p>
           </div>
           <Add />
+          {/* <button onClick={getData}>Test</button> */}
         </div>
       </div>
       <Profile />
