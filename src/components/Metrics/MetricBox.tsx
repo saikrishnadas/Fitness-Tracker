@@ -4,7 +4,6 @@ interface MetricBoxProps {
   count: number;
   isWeight: boolean;
   color: string;
-  datas?:any;
 }
 
 function MetricBox({
@@ -12,8 +11,7 @@ function MetricBox({
   description,
   count,
   isWeight,
-  color,
-  datas
+  color
 }: MetricBoxProps) {
   return (
     <div

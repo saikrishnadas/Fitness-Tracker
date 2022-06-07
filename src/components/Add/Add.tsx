@@ -4,6 +4,10 @@ import Modal from 'react-modal';
 import { Formik, Form, useField } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
+// @ts-ignore
+import { v4 as uuidv4 } from 'uuid';
+import slugify from 'slugify';
+
 
 const customStyles = {
   content: {
@@ -47,7 +51,7 @@ export const TextField = ({ placeholder, ...props }: any) => {
 
 function Add() {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [currentDate,setCurrent] = useState<any>()
+  const [currentDate,setCurrent] = useState<String>("")
 
   const todayDate = new Date();
   useEffect(() => {
@@ -70,6 +74,7 @@ function Add() {
     fat: yup.number().required(),
     fiber: yup.number().required(),
   });
+
   const handleSubmit = async (data:any) => {
     await axios.post('/api/addFood',{
     caloriesBurned:data.caloriesBurned,
@@ -79,9 +84,12 @@ function Add() {
     carbs:data.carbs,
     fat:data.fat,
     fiber:data.fiber,
-    date: currentDate
+    Tdate: String(currentDate),
+    slug: slugify(String(uuidv4()))
     })
+    console.log(String(currentDate))
   }
+  
   return (
     <>
       <div

@@ -30,9 +30,14 @@ const foodSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
-        date:{
-            type: Date,
+        Tdate:{
+            type: String,
             required:true
+        },
+        slug:{
+            type: String,
+            required: true,
+            unique: true
         }
     },
     { timestamps: true }
